@@ -1,6 +1,7 @@
 (function ($) {
     let GITHUP_API = `https://api.github.com/repos/nshaibu/`;
-    let GITHUP_REPO_NAMES = ["QBox", "shortcutVirusRemover", "ChatClient", "ConcurrentServer"];
+    let GITHUP_REPO_NAMES = ["QBox", "shortcutVirusRemover", 
+                            "ChatClient", "ConcurrentServer"];
 
     class Paginator {
         //My Custom Repo And Post Paginator (html5up.net)
@@ -100,7 +101,7 @@
 				<li><a href="#" class="button">More</a></li>
 			</ul>
         </article>`;
-        $(repo).appendTo("#js-projects-section")
+        $(repo).appendTo("#js-projects-section");
     }
     
     let firstPageObject = paginator.goto(1);
@@ -109,9 +110,7 @@
     if (firstPageObject) {
         projectsSection.remove();
         firstPageObject.repos.forEach(function(name) {
-            Paginator.getGitHuhRepo(name, function (data) {
-                drawProjectRepo(data);
-            });
+            Paginator.getGitHuhRepo(name, function (data) {drawProjectRepo(data);});
         });
     }
 
