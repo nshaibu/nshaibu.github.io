@@ -1,7 +1,11 @@
 (function ($) {
     let GITHUP_API = `https://api.github.com/repos/nshaibu/`;
+
     let GITHUP_REPO_NAMES = ["QBox", "shortcutVirusRemover", 
-                            "ChatClient", "ConcurrentServer"];
+                            "ChatClient", "ConcurrentServer",
+                            "TrimLabelImg", "PostfixExpressionAndEvaluation",
+                            "Invoice-Management-System", "Market"
+                        ];
 
     class Paginator {
         //My Custom Repo And Post Paginator (html5up.net)
@@ -83,7 +87,7 @@
         }
     }
 
-    let paginator = new Paginator(repos=GITHUP_REPO_NAMES, 2);
+    let paginator = new Paginator(repos=GITHUP_REPO_NAMES, 4);
     paginator.paginate();
     window.paginator = paginator;
 
@@ -98,19 +102,41 @@
 			</header>
 			<p>${repoData.description}</p>
 			<ul class="actions special">
-				<li><a href="#" class="button">More</a></li>
+				<li><a href="${repoData.html_url}" target="_blank" class="button">More</a></li>
 			</ul>
         </article>`;
         $(repo).appendTo("#js-projects-section");
     }
     
     let firstPageObject = paginator.goto(1);
-    let projectsSection = $('#js-projects-section>article');
+    
 
     if (firstPageObject) {
-        projectsSection.remove();
+        $('#js-projects-section>article').remove();
         firstPageObject.repos.forEach(function(name) {
             Paginator.getGitHuhRepo(name, function (data) {drawProjectRepo(data);});
+        });
+
+        $('#js-prev-pagination-btn').click(function (event) {
+            let btn = $(event.target);
+            let pageObject = paginator.previous();
+            if (pageObject) {
+                $('#js-projects-section>article').remove();
+                pageObject.repos.forEach(function (name) {
+                    Paginator.getGitHuhRepo(name, function (data) {drawProjectRepo(data);});
+                });
+            }
+        });
+
+        $('#js-next-pagination-btn').click(function (event) {
+            let btn = $(event.target);
+            let pageObject = paginator.next();
+            if (pageObject) {
+                $('#js-projects-section>article').remove();
+                pageObject.repos.forEach(function (name) {
+                    Paginator.getGitHuhRepo(name, function (data) {drawProjectRepo(data);});
+                });
+            }
         });
     }
 
