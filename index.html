@@ -197,7 +197,7 @@
 					</div>
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; 2020</li><li><a href="">Nafiu Shaibu</a></li></ul>
+						<ul><li><span>&copy;</span><span id="js-copyright-year"></span></li><li><a href="">Nafiu Shaibu</a></li></ul>
 					</div>
 
 			</div>
@@ -213,6 +213,9 @@
 			<script src="assets/js/main.js"></script>
 			<script>
 				$(document).ready(function () {
+					let date = new Date();
+					$("#js-copyright-year").text(`${date.getFullYear()}`);
+
 					$('#contactMeForm').submit(function (event) {
 						event.preventDefault();
 						let form = $(event.target);
