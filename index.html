@@ -181,7 +181,9 @@
 							Subject : `Hire me - ${emailSubjectInput.val()}`,
 							Body : emailSubjectInput.val(),
 						})
-						.then((message) => alert(message));
+						.then((message) => {
+							alert(`${message}. Please send your message to nafiushaibu1@gmail.com using your favourite mail client.`);
+						});
 
 						emailBodyTextInput.val("");
 					});
