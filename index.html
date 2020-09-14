@@ -224,10 +224,7 @@
 						$.ajax({
 							type: "POST",
 							url: "assets/php/send_email.php",
-							xhrFields: {
-        withCredentials: true
-    },
-							
+							xhrFields: {withCredentials: true},
 							dataType: "json",
 							data: {
 								email: senderAddressInput.val(),
@@ -235,7 +232,10 @@
 								message: emailSubjectInput.val()
 							},
 							success: function (data) {
-								alert(data)
+								alert(data);
+							},
+							error: function (error) {
+								console.log(error);
 							}
 						}).fail(function (error) {
 							console.log(error);
