@@ -170,7 +170,7 @@
 						<footer id="footer" style="width:100%;display:flex;flex-direction:column;padding:2;">
 							<h2 style="align-self:center;color:black;">Contact Me</h2>
 							<section style="width:100%;">
-								<form id="contactMeForm" method="post" action="#">
+								<form id="contactMeForm" enctype="multipart/form-data" method="post" action="#">
 									<div class="fields">
 										<div class="field">
 											<label for="id_subject">Subject</label>
@@ -225,11 +225,7 @@
 							type: "POST",
 							url: "assets/php/send_email.php",
 							dataType: "json",
-							data: {
-								email: senderAddressInput.val(),
-								subject: emailSubjectInput.val(),
-								message: emailSubjectInput.val()
-							},
+							data: form.serialize(),
 							success: function (data) {
 								alert(data);
 							},
