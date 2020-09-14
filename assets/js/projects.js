@@ -87,7 +87,7 @@
         }
     }
 
-    let paginator = new Paginator(repos=GITHUP_REPO_NAMES, 4);
+    let paginator = new Paginator(repos=GITHUP_REPO_NAMES, 6);
     paginator.paginate();
     window.paginator = paginator;
 
