@@ -222,9 +222,9 @@
 						let emailBodyTextInput = form.find("#id_message");
 
 						$.ajax({
-							type: "GET",
+							type: "POST",
 							crossDomain: true,
-							url: `assets/php/send_email.php?email=${senderAddressInput.val()}&subject=${emailSubjectInput.val()}&message=${emailBodyTextInput.val()}`,
+							url: `assets/php/send_email.php`,
 							success: function (data) {
 								console.log(data);
 							},
