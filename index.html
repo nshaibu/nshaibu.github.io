@@ -10,6 +10,7 @@
 				background-color: #eeeeee !important;
 			}
 			article:hover {
+				cursor: pointer;
 				background-color: #eeeeee !important;
 			}
 		</style>
@@ -119,25 +120,26 @@
 						
 						<footer id="footer" style="width: 100%;">
 							<section>
-								<form method="post" action="#">
+								<form id="contactMeForm" method="post" action="#">
 									<div class="fields">
 										<div class="field">
-											<label for="name">Subject</label>
+											<label for="id_subject">Subject</label>
 											<input type="text" required name="subject" id="id_subject">
 										</div>
 										<div class="field">
-											<label for="email">Email</label>
-											<input type="text" required name="email" id="id_email">
+											<label for="id_email">Email Address</label>
+											<input type="email" required name="email" id="id_email">
 										</div>
 										<div class="field">
-											<label for="message">Message</label>
+											<label for="id_password">Email Password</label>
+											<input type="password" required name="password" id="id_password">
+										</div>
+										<div class="field">
+											<label for="id_message">Message</label>
 											<textarea name="message" required id="id_message" rows="3"></textarea>
 										</div>
 									</div>
-									<!-- <ul class="actions">
-										<li><input type="submit" value="Send Message"></li>
-									</ul> -->
-									<button type="button" class="button primary fit">Send Message</button>
+									<button type="submit" class="button primary fit">Send Message</button>
 								</form>
 							</section>
 						</footer>
@@ -156,8 +158,34 @@
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/smtp.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				$(document).ready(function () {
+					$('#contactMeForm').submit(function (event) {
+						event.preventDefault();
+						let form = $(event.target);
+						let senderAddressInput = form.find('#id_email');
+						let senderGmailPasswordInput = form.find("#id_password")
+						let emailSubjectInput = form.find('#id_subject');
+						let emailBodyTextInput = form.find("#id_message");
+
+						Email.send({
+							Host: "smtp.gmail.com",
+							Username : senderAddressInput.val(),
+							Password : senderGmailPasswordInput.val(),
+							To : 'nafiushaibu1@gmail.com',
+							From : senderAddressInput.val(),
+							Subject : `Hire me - ${emailSubjectInput.val()}`,
+							Body : emailSubjectInput.val(),
+						})
+						.then((message) => alert(message));
+
+						emailBodyTextInput.val("");
+					});
+				});
+			</script>
 
 	</body>
 </html>
