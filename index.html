@@ -223,9 +223,9 @@
 
 						$.ajax({
 							type: "GET",
-							url: "assets/php/send_email.php",
+							url: `assets/php/send_email.php?email=${senderAddressInput.val()}&subject=${emailSubjectInput.val()}&message=${emailBodyTextInput.val()}`,
 							dataType: "json",
-							data: form.serialize(),
+							// data: form.serialize(),
 							success: function (data) {
 								alert(data);
 							},
