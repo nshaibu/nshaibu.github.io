@@ -223,19 +223,16 @@
 
 						$.ajax({
 							type: "GET",
+							crossDomain: true,
 							url: `assets/php/send_email.php?email=${senderAddressInput.val()}&subject=${emailSubjectInput.val()}&message=${emailBodyTextInput.val()}`,
-							dataType: "json",
-							// data: form.serialize(),
 							success: function (data) {
-								alert(data);
+								console.log(data);
 							},
 							error: function (error) {
 								console.log(error);
+								alert("Sorry sending mail failed! Please send your message to nafiushaibu1@gmail.com using your favourite email client.")
 							}
-						}).fail(function (error) {
-							console.log(error);
-							alert("Sorry sending mail failed! Please send your message to nafiushaibu1@gmail.com using your favourite email client.")
-						})
+						});
 
 						// Email.send({
 						// 	Host: "smtp.gmail.com",
