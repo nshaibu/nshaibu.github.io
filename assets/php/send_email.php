@@ -1,8 +1,8 @@
 <?php
-if($_POST) {
-    $subject = $_POST['subject'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+if($_GET) {
+    $subject = $_GET['subject'];
+    $email = $_GET['email'];
+    $message = $_GET['message'];
 
     $subject = "Hire me -" . $subject;
 
