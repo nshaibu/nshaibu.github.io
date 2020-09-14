@@ -180,10 +180,10 @@
 											<label for="id_email">Email Address</label>
 											<input type="email" required name="email" id="id_email">
 										</div>
-										<!-- <div class="field">
+										<div class="field">
 											<label for="id_password">Email Password</label>
 											<input type="password" required name="password" id="id_password">
-										</div> -->
+										</div>
 										<div class="field">
 											<label for="id_message">Message</label>
 											<textarea name="message" required id="id_message" rows="3"></textarea>
@@ -221,33 +221,21 @@
 						let emailSubjectInput = form.find('#id_subject');
 						let emailBodyTextInput = form.find("#id_message");
 
-						$.ajax({
-							type: "POST",
-							crossDomain: true,
-							url: `assets/php/send_email.php`,
-							success: function (data) {
-								console.log(data);
-							},
-							error: function (error) {
-								console.log(error);
-								alert("Sorry sending mail failed! Please send your message to nafiushaibu1@gmail.com using your favourite email client.")
-							}
+						Email.send({
+							Host: "smtp.gmail.com",
+							Username : senderAddressInput.val(),
+							Password : senderGmailPasswordInput.val(),
+							To : 'nafiushaibu1@gmail.com',
+							From : senderAddressInput.val(),
+							Subject : `Hire me - ${emailSubjectInput.val()}`,
+							Body : emailSubjectInput.val(),
+						})
+						.then((message) => {
+							alert(`
+							Please send your message to nafiushaibu1@gmail.com 
+							using your favourite mail client. ${message}
+							`);
 						});
-
-						// Email.send({
-						// 	Host: "smtp.gmail.com",
-						// 	Username : senderAddressInput.val(),
-						// 	Password : senderGmailPasswordInput.val(),
-						// 	To : 'nafiushaibu1@gmail.com',
-						// 	From : senderAddressInput.val(),
-						// 	Subject : `Hire me - ${emailSubjectInput.val()}`,
-						// 	Body : emailSubjectInput.val(),
-						// })
-						// .then((message) => {
-						// 	alert(`${message}. Please send your message to nafiushaibu1@gmail.com using your favourite mail client.`);
-						// });
-
-						emailBodyTextInput.val("");
 					});
 				});
 			</script>
