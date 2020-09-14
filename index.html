@@ -224,7 +224,6 @@
 						$.ajax({
 							type: "POST",
 							url: "assets/php/send_email.php",
-							xhrFields: {withCredentials: true},
 							dataType: "json",
 							data: {
 								email: senderAddressInput.val(),
