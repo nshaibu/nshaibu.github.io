@@ -222,7 +222,7 @@
 						let emailBodyTextInput = form.find("#id_message");
 
 						$.ajax({
-							type: "POST",
+							type: "GET",
 							url: "assets/php/send_email.php",
 							dataType: "json",
 							data: form.serialize(),
