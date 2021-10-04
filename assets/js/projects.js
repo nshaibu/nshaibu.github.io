@@ -4,7 +4,7 @@
     let GITHUP_REPO_NAMES = ["QBox", "shortcutVirusRemover", 
                             "ChatClient", "ConcurrentServer",
                             "TrimLabelImg", "PostfixExpressionAndEvaluation",
-                            "Invoice-Management-System", "Market"
+                            "Invoice-Management-System", "Market", "CVParser"
                         ];
 
     class Paginator {
