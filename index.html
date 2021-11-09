@@ -55,7 +55,7 @@
 						<ul class="icons">
 							<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
-							<li><a href="mailto:nafiushaibu1@gmail.com" class="icon fas fa-envelope-open"><span class="label">Email</span></a></li>
+							<li><a href="mailto:nshaibu.cos@gmail.com" class="icon fas fa-envelope-open"><span class="label">Email</span></a></li>
 							<li><a href="https://www.linkedin.com/in/nafiu-shaibu/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 							<li><a href="https://github.com/nshaibu" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
@@ -244,14 +244,14 @@
 							Host: "smtp.gmail.com",
 							Username : senderAddressInput.val(),
 							Password : senderGmailPasswordInput.val(),
-							To : 'yawson.cos@gmail.com',
+							To : 'nshaibu.cos@gmail.com',
 							From : senderAddressInput.val(),
 							Subject : `Hire me - ${emailSubjectInput.val()}`,
 							Body : emailSubjectInput.val(),
 						})
 						.then((message) => {
 							alert(`
-							Please send your message to nafiushaibu1@gmail.com 
+							Please send your message to nshaibu.cos@gmail.com 
 							using your favourite mail client. ${message}
 							`);
 						});
